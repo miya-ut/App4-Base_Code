@@ -6,8 +6,8 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-Author 1
-Author 2
+Miya Walker
+Tim Riedel
  
 Further Information:
 http://diystream.cns.utexas.edu/
@@ -30,7 +30,180 @@ blah, blah, blah, blah
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
    </head> 
-	   PUT YOUR OLD CODE IN HERE
-	   
+	
+	
+<script>
+	<!-- This defines the UTI variable and establishes it to begin at 0, so the app can calculate the probability of the participant having a UTI. -->
+        var uti_count = 0;
+
+	<!-- This function indicates that the answer to a question is in favor of the participant having a UTI. -->
+        function utiAdd(){
+            uti_count = uti_count + 1;
+
+        }
+	
+	<!-- This function calculates the percent likelihood that the participant has a UTI depending on their answers. It also displays the results. -->
+	function resultsoutput(){
+		var utiPercent = (uti_count/5) * 100
+		var resultText = document.getElementById("results");
+		resultText.innerHTML = "Probability you have a UTI =" + utiPercent + "%";
+	
+	}
+
+  </script>
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Do you have a UTI?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a urinary tract infection? Answer a few short questions to find out!</p>
+	
+	<!-- The below code creates a button that takes the participant to the next page. -->
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+	</div><!-- The content above serves as a introduction and disclaimer. The code below adds a footer to the end of the page. -->
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+	
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        	<p>Are you experiencing pain during urination or sexual intercourse?</p>
+		<a href="#two" onclick="utiAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#two";" class="w3-btn w3-black"> No </a>
+    	</div><!-- <p> indicates a paragraph. Below the question, is the code that creates two buttons that both take the participant to the next page. 
+ 	      If the participant chooses yes, then the calculated probability of a uti will increase using the previously described functions. -->
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>	
+	
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Has your urine changed appearance (cloudy, dark, bloody, etc.)?</p>
+		<a href="#three" onclick="utiAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#three";" class="w3-btn w3-black"> No </a>
+	</div><!-- Each of the questions are formatted the same way, and they ask about a symptom of a urinary tract infection. -->
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+
+<!-- The beginning of each of the questions includes a page identifier, which is referrenced in each of the codes for the buttons. -->	
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you need to urinate more frequently? Answer "No" if more frequent urination can be explained by other factors like increased hydration.</p>
+		<a href="#four" onclick="utiAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#four";" class="w3-btn w3-black"> No </a>
+	</div>	
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+	
+<div class="page" id="four">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+		<!-- Each page also includes a header. The title of the header is coded above. -->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        	<p>Are your symptoms seasonal or chronic?</p>
+		<a href="#five" onclick="allergyAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#five" onclick="coldAdd();" class="w3-btn w3-black"> No </a>
+    	</div>
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+	
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have body aches?</p>
+		<a href="#six" onclick="coldAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#six" onclick="allergyAdd();" class="w3-btn w3-black"> No </a>
+	</div><!-- I included this question because body aches are a common symptom of the common cold but not seaonal allergies/hay fever. -->
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+	
+<div class="page" id="six">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        	<p>Are your coughs dry?</p>
+		<a href="#results" onclick="allergyAdd();" class="w3-btn w3-black"> Yes </a>
+		<a href="#results" onclick="coldAdd();" class="w3-btn w3-black"> No </a>
+    	</div><!-- I included this question because coughs caused by allergies tend to be dry, and coughs caused by the common cold tend to have phlegm. -->
+		<footer class="w3-bottom w3-container w3-flat-carrot">
+			<p>DIY!</p>
+		</footer>
+	</div>
+	
+<div class="page" id="results">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">	
+		<p>Click below to calculate your results!</p>
+		<a href="#results" onclick="resultsoutput();" class="w3-btn w3-black"> Results </a>
+	</div><!-- The results are displayed on another page. -->
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+	</div>
    </body>
 </html>
